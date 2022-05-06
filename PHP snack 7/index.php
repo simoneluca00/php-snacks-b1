@@ -30,22 +30,6 @@ $students = [
     ],
 ];
 
-for ($i=0; $i < count($students) ; $i++) { 
-
-    $singleArrayVoti = $students[$i]["voti"];
-    $studentName = $students[$i]["nome"];
-    $studentSurname = $students[$i]["cognome"];
-
-
-    $sommaVotiAlunno = array_sum($singleArrayVoti);
-    $mediaVotiAlunno = $sommaVotiAlunno / count($singleArrayVoti);
-    $roundMedia = round($mediaVotiAlunno, 1);
-
-    echo "<p>" . "L'alunno/a ".  $studentName . " " . $studentSurname . " ha una media voti di: " . $roundMedia .  "</p>";
-
-    // echo "<p>" . $mediaVotiAlunno .  "</p>";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +39,40 @@ for ($i=0; $i < count($students) ; $i++) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP snacks blocco 1 (snack 7)</title>
+
+    <style>
+        p {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    
+    <div>
+        <?php             
+            for ($i=0; $i < count($students) ; $i++) { 
+
+                $singleArrayVoti = $students[$i]["voti"];
+                $studentName = $students[$i]["nome"];
+                $studentSurname = $students[$i]["cognome"];
+            
+            
+                $sommaVotiAlunno = array_sum($singleArrayVoti);
+                
+                // $sommaVotiAlunno /= count($singleArrayVoti); --> forma abbreviata 
+                $mediaVotiAlunno = $sommaVotiAlunno / count($singleArrayVoti);
+                $roundMedia = round($mediaVotiAlunno, 1);
+        ?>
+
+                <p>
+                    <?php 
+                        echo "L'alunno/a ".  $studentName . " " . $studentSurname . " ha una media voti di: " . $roundMedia;
+                    ?>
+               </p>
+        <?php
+            }
+            var_dump($students);
+        ?>
+
+    </div>
 </body>
 </html>

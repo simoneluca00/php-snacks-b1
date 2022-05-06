@@ -37,10 +37,27 @@ $matches = [
 
 ];
 
-for ($i=0; $i < count($matches) ; $i++) { 
-    echo "<p>" . 
-            $i .")" . " " . $matches[$i]['team1'] . " " . '-' . " " . $matches[$i]['team2'] . " " . '|' . " " . $matches[$i]['point_team_1'] . "-" . $matches[$i]['point_team_2'] . 
-        "</p>";
-};
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP snacks blocco 1</title>
+</head>
+<body>
+
+<div>
+    <?php for ($i=0; $i < count($matches); $i++) { ?>
+        <p>
+            <?php 
+                echo $i .")" . " " . $matches[$i]['team1'] . " " . '-' . " " . $matches[$i]['team2'] . " " . '|' . " " . $matches[$i]['point_team_1'] . "-" . $matches[$i]['point_team_2']; 
+            ?>
+        </p>
+    <?php }?>
+</div>
+    
+</body>
+</html>

@@ -11,7 +11,7 @@
 
 $userName = (isset($_GET['name'])) ? $_GET['name'] : '';
 $userMail = (isset($_GET['mail'])) ? $_GET['mail'] : '';
-$userAge = (isset($_GET['age'])) ? $_GET['age'] : '';
+$userAge = (isset($_GET['age'])) ? (int)$_GET['age'] : '';
 
 
 ?>
@@ -48,7 +48,7 @@ $userAge = (isset($_GET['age'])) ? $_GET['age'] : '';
         label,
         input {
             display: block;
-            width: 100%;
+            width: 98%;
         }
 
         button {
@@ -75,13 +75,15 @@ $userAge = (isset($_GET['age'])) ? $_GET['age'] : '';
                     <?php echo "Compila tutti i campi:"; ?>
                 </strong>
             </h2>
+            
     <!-- NOTE se sono soddisfatte tutte le condizioni stampare: "accesso garantito" -->
         <?php } else if (is_numeric($userAge)  && strlen($userName) > 3  && strpos($userMail, '@') && strpos($userMail, '.')) { ?>
             <h2 style="color: green;">
                 <?php echo "Accesso riuscito"; ?>
             </h2>
         <?php } else { ?>
-    <!-- NOTE se qualche condizione non è soddisfatta stampare "accesso negato" -->
+
+    <!-- NOTE se almeno una condizione non è soddisfatta stampare "accesso negato" -->
             <h2 style="color: red;">
                 <?php echo "Accesso negato"; ?>
             </h2>
@@ -102,7 +104,7 @@ $userAge = (isset($_GET['age'])) ? $_GET['age'] : '';
 
             <!-- NOTE condizione per stampare a schermo l'errore fatto dall'utente (MAIL DOT) -->
             <?php if (!empty($_GET['mail'])) { 
-                if (strpos($userMail, '.') == false || strpos($userMail, '@') == false) {
+                if (strpos($userMail, '.') == 0 || strpos($userMail, '@') == 0) {
             ?>
             <p>La mail deve contenere il "." (dot) e la "@" (at sign)</p>
 
@@ -113,7 +115,7 @@ $userAge = (isset($_GET['age'])) ? $_GET['age'] : '';
 
 
             <label for="age">Età:</label>
-            <input type="text" name="age" placeholder="Inserisci la tua età">
+            <input type="number" name="age" min="1" placeholder="Inserisci la tua età">
 
             <!-- NOTE condizione per stampare a schermo l'errore fatto dall'utente (ETA') -->
             <?php if (!empty($_GET['age']) && !is_numeric($userAge)) { ?>

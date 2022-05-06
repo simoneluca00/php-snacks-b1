@@ -43,7 +43,7 @@ $numeriEstratti = [];
         <?php 
             //condizione per far avviare il ciclo while (la differenza tra il max e min di $numeroRandom deve essere maggiore o uguale alla lunghezza massima dell'array) 
             if (($max - $min) >= $maxLength) {
-                # code...
+
                 while (count($newArray) < $maxLength) { 
                     $randomNumber = rand($min, $max); 
         ?>
