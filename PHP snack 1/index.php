@@ -49,14 +49,31 @@ $matches = [
 </head>
 <body>
 
+<!-- ELEMENTI STAMPATI CON CICLO FOR -->
 <div>
+    <h1>Ciclo FOR</h1>
     <?php for ($i=0; $i < count($matches); $i++) { ?>
         <p>
             <?php 
-                echo $i .")" . " " . $matches[$i]['team1'] . " " . '-' . " " . $matches[$i]['team2'] . " " . '|' . " " . $matches[$i]['point_team_1'] . "-" . $matches[$i]['point_team_2']; 
+                echo $i .")" . " " . $matches[$i]['team1'] . " - " . $matches[$i]['team2'] . " | " . $matches[$i]['point_team_1'] . " - " . $matches[$i]['point_team_2']; 
             ?>
         </p>
     <?php }?>
+</div>
+
+<hr>
+
+<!-- ELEMENTI STAMPATI CON CICLO FOREACH -->
+<div>
+    <h1>Ciclo FOREACH</h1>
+
+    <?php foreach ($matches as $match) { ?>
+        <p>
+            <?php 
+                echo $match["team1"] . " - " . $match["team2"]  . " | " . $match['point_team_1']  . " - "  . $match['point_team_2']; 
+            ?>
+        </p>
+        <?php }?>
 </div>
     
 </body>

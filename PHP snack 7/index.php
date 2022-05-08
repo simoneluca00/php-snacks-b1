@@ -1,10 +1,11 @@
 <?php
 
 /* 
-## Snack 7
-Creare un array contenente qualche alunno di un’ipotetica classe. 
-Ogni alunno avrà Nome, Cognome e un array contenente i suoi voti scolastici. 
-Stampare Nome, Cognome e la media dei voti di ogni alunno.     
+    Snack 7
+    
+    Creare un array contenente qualche alunno di un’ipotetica classe. 
+    Ogni alunno avrà Nome, Cognome e un array contenente i suoi voti scolastici. 
+    Stampare Nome, Cognome e la media dei voti di ogni alunno.     
 */
 
 $students = [
@@ -41,13 +42,17 @@ $students = [
     <title>PHP snacks blocco 1 (snack 7)</title>
 
     <style>
-        p {
+        p,
+        h1 {
             text-align: center;
         }
     </style>
 </head>
 <body>
+
+    <!-- ELEMENTI STAMPATI CON CICLO FOR -->
     <div>
+        <h1>Ciclo FOR</h1>
         <?php             
             for ($i=0; $i < count($students) ; $i++) { 
 
@@ -70,9 +75,40 @@ $students = [
                </p>
         <?php
             }
-            var_dump($students);
         ?>
 
     </div>
+    
+    <hr>
+
+    <!-- ELEMENTI STAMPATI CON CICLO FOREACH -->
+    <div>
+        <h1>Ciclo FOREACH</h1>
+        <?php             
+            foreach ($students as $student) { 
+
+                $singleArrayVoti2 = $student["voti"];
+                $studentName2 = $student["nome"];
+                $studentSurname2 = $student["cognome"];
+
+                $mediaVotiAlunno2 = array_sum($student["voti"]) / count($student["voti"]);
+                $roundMedia2 = round($mediaVotiAlunno2, 1);
+        ?>
+
+                <p>
+                    <?php 
+                        echo "L'alunno/a " . $studentName2 . " " . $studentSurname2 . " ha una media voti di: " . $roundMedia2;
+                    ?>
+               </p>
+        <?php
+            }
+        ?>
+    </div>
+
+    <!-- ARRAY COMPLETO -->
+    <div>
+        <?php var_dump($students);?>
+    </div>
+
 </body>
 </html>
